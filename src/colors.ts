@@ -9,6 +9,7 @@ export const colors = {
      wrongLetterColor: "",
 
      buttonBackground: "#4C4347",
+     headerButtonColor: "#B7AEB4",
 
      modalBackground: "#312B2D",
      modalTextColor: "#BBB",

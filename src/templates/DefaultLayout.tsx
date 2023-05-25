@@ -6,6 +6,7 @@ import { ModalLetter } from "../components/ModalLetter";
 import { useState } from "react";
 import { Keyboard } from "../components/Keyboard";
 import { Outlet } from "react-router-dom";
+import { Header } from "../components/Header";
 
 export function DefaultLayout() {
      const [isModalOpen, setIsModalOpen] = useState(true);
@@ -21,7 +22,10 @@ export function DefaultLayout() {
                >
                     <Flex
                          flex={1}
+                         flexDirection={'column'}
+                         align={'center'}
                     >
+                         <Header />
                          <Outlet />
                     </Flex>
                     <Keyboard />
