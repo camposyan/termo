@@ -1,13 +1,15 @@
 import {
-     Box,
-     Button, Flex, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader,
-     ModalOverlay, useDisclosure
+     Box, Flex, Modal, ModalBody, ModalContent, ModalOverlay
 } from "@chakra-ui/react";
 import { colors } from "../colors";
 import { ModalLetter } from "../components/ModalLetter";
+import { useState } from "react";
+import { Keyboard } from "../components/Keyboard";
+import { Outlet } from "react-router-dom";
 
 export function DefaultLayout() {
-     const { isOpen, onOpen, onClose } = useDisclosure()
+     const [isModalOpen, setIsModalOpen] = useState(true);
+     const onClose = () => {setIsModalOpen(false);}
 
      return (
           <>
@@ -15,12 +17,18 @@ export function DefaultLayout() {
                     width={'100vw'}
                     height={'100vh'}
                     backgroundColor={colors.background}
+                    flexDirection={'column'}
                >
-
+                    <Flex
+                         flex={1}
+                    >
+                         <Outlet />
+                    </Flex>
+                    <Keyboard />
                </Flex>
 
                <Modal
-                    isOpen={true}
+                    isOpen={isModalOpen}
                     onClose={onClose}
                     isCentered
                     size={'3xl'}
@@ -28,8 +36,6 @@ export function DefaultLayout() {
                >
                     <ModalOverlay />
                     <ModalContent backgroundColor={colors.modalBackground}>
-                         {/* <ModalHeader>Modal Title</ModalHeader> */}
-                         {/* <ModalCloseButton /> */}
                          <ModalBody
                               color={colors.modalTextColor}
                               fontSize={'1.5rem'}
@@ -40,6 +46,44 @@ export function DefaultLayout() {
                                    Descubra a palavra certa em 6 tentativas. Depois de cada tentativa, as peças mostram quão
                                    perto você está da solução.
                               </Box>
+                              <Flex
+                                   marginY={'2rem'}
+                              >
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={colors.correctLetterBackground}
+                                        size={"large"}
+                                        text={"T"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"U"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"R"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"M"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"A"}
+                                   />
+                              </Flex>
                               <Flex
                                    marginBottom={'1rem'}
                                    align={'end'}
@@ -53,6 +97,44 @@ export function DefaultLayout() {
                                    faz parte da palavra e está na posição correta.
                               </Flex>
                               <Flex
+                                   marginY={'2rem'}
+                              >
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"V"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"I"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={colors.wrongPositionLetterBackground}
+                                        size={"large"}
+                                        text={"O"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"L"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"A"}
+                                   />
+                              </Flex>
+                              <Flex
                                    marginBottom={'1rem'}
                                    align={'end'}
                               >
@@ -63,6 +145,43 @@ export function DefaultLayout() {
                                         text={"O"}
                                    />
                                    faz parte da palavra mas em outra posição.
+                              </Flex>
+                              <Flex
+                                   marginY={'2rem'}
+                              >
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"P"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"U"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"L"}
+                                   />
+                                   <ModalLetter
+                                        isWrong
+                                        size={"large"}
+                                        text={"G"}
+                                   />
+                                   <ModalLetter
+                                        color={colors.white}
+                                        backgroundColor={'inherit'}
+                                        hasBorder
+                                        size={"large"}
+                                        text={"A"}
+                                   />
                               </Flex>
                               <Flex
                                    marginBottom={'1rem'}
@@ -85,13 +204,6 @@ export function DefaultLayout() {
                                    Uma palavra nova aparece a cada dia.
                               </Box>
                          </ModalBody>
-
-                         {/* <ModalFooter>
-                              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                                   Close
-                              </Button>
-                              <Button variant='ghost'>Secondary Action</Button>
-                         </ModalFooter> */}
                     </ModalContent>
                </Modal>
           </>

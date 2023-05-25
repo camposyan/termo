@@ -1,13 +1,15 @@
 export const colors = {
-  white: "#FFF",
+     white: "#FFF",
 
-  background: "#6E5C62",
+     background: "#6E5C62",
 
-  correctLetterBackground: "#3AA394",
-  wrongPositionLetterBackground: "#D3AD69",
-  wrongLetterBackground: "#191516",
-  wrongLetterColor: "",
+     correctLetterBackground: "#3AA394",
+     wrongPositionLetterBackground: "#D3AD69",
+     wrongLetterBackground: "#191516",
+     wrongLetterColor: "",
 
-  modalBackground: "#312B2D",
-  modalTextColor: "#BBB",
+     buttonBackground: "#4C4347",
+
+     modalBackground: "#312B2D",
+     modalTextColor: "#BBB",
 };

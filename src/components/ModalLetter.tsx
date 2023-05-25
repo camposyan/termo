@@ -6,9 +6,11 @@ interface ModalLetterProps {
      color?: string,
      backgroundColor?: string,
      isWrong?: boolean
+     size?: 'small' | 'large'
+     hasBorder?: boolean
 }
 
-export function ModalLetter({ color, backgroundColor, text, isWrong }: ModalLetterProps) {
+export function ModalLetter({ color, backgroundColor, text, isWrong, size, hasBorder }: ModalLetterProps) {
      return (
           <Flex
                marginX={'0.5rem'}
@@ -16,10 +18,11 @@ export function ModalLetter({ color, backgroundColor, text, isWrong }: ModalLett
                color={isWrong ? colors.wrongLetterColor : color}
                justify={'center'}
                align={'center'}
-               width={'2.5rem'}
-               height={'2.5rem'}
+               width={size === 'large' ? '3.5rem' : '2.5rem'}
+               height={size === 'large' ? '3.5rem' : '2.5rem'}
                borderRadius={'5px'}
                fontWeight={'bold'}
+               border={hasBorder ? `3px solid ${colors.background}` : ''}
           >
                {text}
           </Flex>
